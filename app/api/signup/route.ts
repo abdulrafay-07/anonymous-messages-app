@@ -7,6 +7,15 @@ import { NextRequest } from "next/server";
 import bcrypt from "bcryptjs";
 
 export async function POST(request: NextRequest) {
+    if (request.method !== "POST") {
+        return Response.json({
+            status: false,
+            message: "Other requests than POST are not allowed"
+        }, {
+            status: 405
+        });
+    };
+
     await databaseConnect();
 
     try {
