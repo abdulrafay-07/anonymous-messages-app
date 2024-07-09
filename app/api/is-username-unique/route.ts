@@ -11,15 +11,6 @@ const usernameQuerySchema = z.object({
 });
 
 export async function GET(request: NextRequest) {
-    if (request.method !== "GET") {
-        return Response.json({
-            status: false,
-            message: "Other requests than GET are not allowed"
-        }, {
-            status: 405
-        });
-    };
-    
     await databaseConnect();
 
     try {
@@ -32,8 +23,6 @@ export async function GET(request: NextRequest) {
         // zod validation
 
         const result = usernameQuerySchema.safeParse(queryParam);
-
-        console.log(result); //TODO: remove
 
         if (!result.success) {
             const usernameErrors = result.error.format().username?._errors || [];
