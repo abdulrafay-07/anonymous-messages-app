@@ -86,11 +86,10 @@ const Signup = () => {
             router.replace(`/verify/${username}`);
         } catch (error) {
             const axiosError = error as AxiosError<ApiResponse>;
-            const errorMessage = axiosError.response?.data.message;
 
             toast({
                 title: "Signup Failed",
-                description: errorMessage,
+                description: axiosError.response?.data.message,
                 variant: "destructive",
             });
         } finally {
@@ -99,7 +98,7 @@ const Signup = () => {
     };
 
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gray-100">
+        <div className="flex justify-center items-center min-h-screen bg-gray-100 py-8">
             <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">
                 <div className="text-center">
                     <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-6">
