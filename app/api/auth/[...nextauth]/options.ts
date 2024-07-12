@@ -64,6 +64,7 @@ export const authOptions: NextAuthOptions = {
 
             return token;
         },
+        // this session details goes into the "User" import from next-auth
         async session({ session, token }) {
             if (token) {
                 session.user._id = token._id;
