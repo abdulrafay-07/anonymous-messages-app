@@ -31,7 +31,16 @@ export async function GET() {
             { $group: {_id: "$_id", messages: {$push: "messages"}} },
         ]);
 
-        if (!userDetailsWithMessages || userDetailsWithMessages.length === 0) {
+        if (userDetailsWithMessages.length === 0) {
+            return Response.json({
+                success: true,
+                message: "No messages found",
+            }, {
+                status: 201
+            });
+        };
+
+        if (!userDetailsWithMessages) {
             return Response.json({
                 success: false,
                 message: "User not found",

@@ -25,13 +25,13 @@ export const Navbar = () => {
                             <span className="mr-4">
                                 Welcome, {user?.username || user?.email}
                             </span>
-                            <Button onClick={handleLogout} className="w-full md:w-auto">
+                            <Button onClick={handleLogout} className="w-full md:w-auto px-8">
                                 Logout
                             </Button>
                         </>
                     ) : (
                         <Link href="/signin" className="w-full md:w-auto">
-                            <Button>
+                            <Button className="px-8">
                                 Sign In
                             </Button>
                         </Link>
